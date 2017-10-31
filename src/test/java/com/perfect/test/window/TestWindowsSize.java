@@ -1,16 +1,15 @@
-package com.perfect.test.window_size;
+package com.perfect.test.window;
 
-import com.perfect.test.BaseTestIos;
+import com.perfect.test.BaseTest;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
 
 import java.net.MalformedURLException;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestWindowsSize extends BaseTestIos {
+public class TestWindowsSize extends BaseTest {
 
     @Before
     public void setUp() {
@@ -19,19 +18,19 @@ public class TestWindowsSize extends BaseTestIos {
 
     @Test
     public void testWindowSizeNOAtomation() throws MalformedURLException {
-        setupDriver(null);
+        setupDriverIos(null);
         checkWindowSize();
     }
 
     @Test
     public void testWindowSizeAppium() throws MalformedURLException {
-        setupDriver("Appium");
+        setupDriverIos("Appium");
         checkWindowSize();
     }
 
     @Test
     public void testWindowSizeXCUI() throws MalformedURLException {
-        setupDriver("XCUITest");
+        setupDriverIos("XCUITest");
         checkWindowSize();
     }
 

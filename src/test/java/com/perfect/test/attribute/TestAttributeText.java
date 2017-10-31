@@ -1,49 +1,40 @@
-package com.perfect.test.attributeValue;
+package com.perfect.test.attribute;
 
-import com.perfect.test.BaseTestIos;
+import com.perfect.test.BaseTest;
 import org.junit.Test;
-import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebElement;
 
 import java.net.MalformedURLException;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
-public class TestAttributeValu extends BaseTestIos {
+public class TestAttributeText extends BaseTest {
 
-
-    String switchTest = "//*[@name='predef_response.error_from_server']";
     String carelinkSettings = "//*[@label='CareLink Settings']";
 
     @Test
     public void testWindowSizeNOAtomation() throws MalformedURLException {
-        setupDriver(null);
+        setupDriverIos(null);
         checkGetAttributeValue();
     }
 
     @Test
     public void testWindowSizeAppium() throws MalformedURLException {
-        setupDriver("Appium");
+        setupDriverIos("Appium");
         checkGetAttributeValue();
     }
 
     @Test
     public void testWindowSizeXCUI() throws MalformedURLException {
-        setupDriver("XCUITest");
+        setupDriverIos("XCUITest");
         checkGetAttributeValue();
     }
 
     public void checkGetAttributeValue() {
-
-
         waitForElement(driver, carelinkSettings);
-        driver.findElementByXPath(carelinkSettings).click();
-
-        waitForElement(driver, switchTest);
-        Object value = driver.findElementByXPath(switchTest).getAttribute("value");
-
-        assertEquals("Is object", value.getClass(), Boolean.class);
-
+        WebElement elementByXPath = driver.findElementByXPath(carelinkSettings);
+        String value = elementByXPath.getAttribute("text");
+        assertEquals( "CareLink Settings", value);
     }
 
 }
